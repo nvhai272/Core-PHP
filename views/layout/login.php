@@ -1,15 +1,18 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $old_input = $_SESSION['old_input'] ?? [];
 $errors = $_SESSION['errors'] ?? [];
-unset($_SESSION['old_input']); // Xóa để tránh lưu lại sau khi reload
-unset($_SESSION['errors']); // Xóa để tránh lưu lại sau khi reload
+
+// var_dump($errors);
+// exit;
+unset($_SESSION['old_input']); 
+unset($_SESSION['errors']); 
 
 ?>
 
@@ -37,7 +40,7 @@ unset($_SESSION['errors']); // Xóa để tránh lưu lại sau khi reload
             <div class="invalid-feedback"><?= htmlspecialchars($errors['email']) ?></div>
             <?php endif; ?>
 
-        </div>
+        </div>  
 
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
@@ -62,7 +65,7 @@ unset($_SESSION['errors']); // Xóa để tránh lưu lại sau khi reload
     <hr>
 
     <a href="/fblogin" class="btn btn-primary">Đăng nhập bằng Facebook</a>
-    <?php if (isset($errors['password'])): ?>
+    <?php if (isset($errors['fb_err'])): ?>
             <div class="invalid-feedback"><?= htmlspecialchars($errors['fb_err']) ?></div>
             <?php endif; ?>
 

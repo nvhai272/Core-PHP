@@ -18,7 +18,7 @@ class LoginController
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-        // session_start();
+         session_start();
 
         $email    = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';

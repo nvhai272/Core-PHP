@@ -27,7 +27,7 @@ class FacebookController
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
-        // session_start();
+        session_start();
         $authUrl = $this->provider->getAuthorizationUrl();
         $_SESSION['oauth2state'] = $this->provider->getState();
         
@@ -67,7 +67,7 @@ class FacebookController
         }
         $_SESSION['account'] = $res->getData();
 
-        echo 'Dang nhap thanh cong roi day nhung chua xu li phan chuyen trang :)';
+        echo 'Dang nhap thanh cong roi day nhung chua xu li phan chuyen trang';
 
 
         } catch (\Exception $e) {
